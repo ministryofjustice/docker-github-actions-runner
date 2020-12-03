@@ -1,4 +1,4 @@
-FROM summerwind/actions-runner:v2.274.1
+FROM summerwind/actions-runner:v2.274.2
 
 ENV DOCKER_COMPOSE_VERSION="1.27.4"
 
