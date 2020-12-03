@@ -1,0 +1,15 @@
+---
+version: "3.7"
+services:
+  test:
+    image: ministryofjustice/actions-runner:latest
+    build: .
+    environment:
+      RUNNER_NAME: ministryofjustice-org-runner-infrastructure-wk9pp-qs2gx
+      RUNNER_ORG: ministryofjustice
+      RUNNER_LABELS: dev,kubernetes,ministryofjustice,infrastructure
+      RUNNER_GROUP: analytical-platform-privileged
+      RUNNER_TOKEN: ARU6O6QH75JER2T2RA5D46K7ZDTGPAVPNFXHG5DBNRWGC5DJN5XF62LEZYAMHEEPWFUW443UMFWGYYLUNFXW4X3UPFYGLN2JNZ2GKZ3SMF2GS33OJFXHG5DBNRWGC5DJN5XA
+      DOCKERD_IN_RUNNER: "false"
+      GITHUB_URL: https://github.com/
+    # entrypoint: bash
