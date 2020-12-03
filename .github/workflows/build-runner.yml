@@ -77,4 +77,4 @@ jobs:
             ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:v${{ env.RUNNER_VERSION }}
 
       - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ steps.docker_build.outputs.digest }} ${{ steps.docker_build_and_push.outputs.digest}}
