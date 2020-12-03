@@ -10,9 +10,6 @@ ENV DOCKER_COMPOSE_VERSION="1.27.4"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3003,DL4001
 
-COPY install_packages.sh /tmp
-RUN /tmp/install_packages.sh
-
 RUN export ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
   && curl -L -o /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_${ARCH} \
   && chmod +x /usr/local/bin/dumb-init
@@ -44,6 +41,9 @@ RUN export ARCH=$(echo ${TARGETPLATFORM} | cut -d / -f2) \
 
 RUN curl -sL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
   && chmod +x /usr/local/bin/docker-compose
+
+# COPY install_packages.sh /tmp
+# RUN /tmp/install_packages.sh
 
 COPY entrypoint.sh /runner
 USER runner
