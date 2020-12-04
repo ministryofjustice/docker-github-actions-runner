@@ -13,7 +13,7 @@ deregister_runner() {
 
 _RUNNER_NAME=${RUNNER_NAME:-${RUNNER_NAME_PREFIX:-github-runner}-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')}
 _RUNNER_WORKDIR=${RUNNER_WORKDIR:-/_work}
-_LABELS=${LABELS:-default}
+_RUNNER_LABELS=${RUNNER_LABELS:-default}
 _RUNNER_GROUP=${RUNNER_GROUP:-Default}
 _SHORT_URL=${REPO_URL}
 
@@ -33,7 +33,7 @@ echo "Configuring"
     --token "${RUNNER_TOKEN}" \
     --name "${_RUNNER_NAME}" \
     --work "${_RUNNER_WORKDIR}" \
-    --labels "${_LABELS}" \
+    --labels "${_RUNNER_LABELS}" \
     --runnergroup "${_RUNNER_GROUP}" \
     --unattended \
     --replace
