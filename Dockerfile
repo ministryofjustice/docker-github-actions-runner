@@ -20,17 +20,14 @@ RUN chmod +x /actions-runner/install_actions.sh \
 COPY token.sh /
 RUN chmod +x /token.sh
 
-COPY installers/ /installers
+COPY installers/ /installers/.
 RUN chmod +x /installers/kubernetes-tools.sh \
   &&  /installers/kubernetes-tools.sh
 
-RUN chmod +x /installers/nodejs.sh\
+RUN chmod +x /installers/nodejs.sh \
   && /installers/nodejs.sh
 
-RUN chmod +x /installers/pulumi.sh\
-  && /installers/pulumi.sh
-
-RUN chmod +x /installers/terraform.sh\
+RUN chmod +x /installers/terraform.sh \
   && /installers/terraform.sh
 
 COPY entrypoint.sh /
