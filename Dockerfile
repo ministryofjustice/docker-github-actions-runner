@@ -1,26 +1,25 @@
-FROM summerwind/actions-runner:v2.274.2
+# hadolint ignore=DL3007
+FROM myoung34/github-runner-base:latest
+LABEL maintainer="myoung34@my.apsu.edu"
 
-ENV DOCKER_COMPOSE_VERSION="1.27.4"
+ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
+RUN mkdir -p /opt/hostedtoolcache
 
-USER root
-RUN curl -sL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
-  && chmod +x /usr/local/bin/docker-compose
+ARG GH_RUNNER_VERSION="2.274.2"
+ARG TARGETPLATFORM
 
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends \
-  awscli \
-  apt-transport-https \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /tmp/*
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-ENV node_major_verison="14"
+WORKDIR /actions-runner
+COPY install_actions.sh /actions-runner
 
-RUN echo "Installing Node ${node_major_verison}" \
-  && apt-get update \
-  && curl -sL https://deb.nodesource.com/setup_${node_major_verison}.x -o nodesource_setup.sh \
-  && bash nodesource_setup.sh \
-  && apt-get install nodejs -y
+RUN chmod +x /actions-runner/install_actions.sh \
+  && /actions-runner/install_actions.sh ${GH_RUNNER_VERSION} ${TARGETPLATFORM} \
+  && rm /actions-runner/install_actions.sh
 
-USER runner
-COPY runner/patched/RunnerService.js /runner/patched/RunnerService.js
-COPY runner/patched/runsvc.sh /runner/patched/runsvc.sh
+COPY token.sh /
+RUN chmod +x /token.sh
+
+COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
