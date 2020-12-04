@@ -22,12 +22,10 @@ RUN chmod +x /token.sh
 
 COPY installers/ /installers/.
 RUN chmod +x /installers/kubernetes-tools.sh \
-  &&  /installers/kubernetes-tools.sh
-
-RUN chmod +x /installers/nodejs.sh \
-  && /installers/nodejs.sh
-
-RUN chmod +x /installers/terraform.sh \
+  && /installers/kubernetes-tools.sh \
+  && chmod +x /installers/nodejs.sh \
+  && /installers/nodejs.sh \
+  && chmod +x /installers/terraform.sh \
   && /installers/terraform.sh
 
 COPY entrypoint.sh /
