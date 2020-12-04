@@ -1,17 +1,9 @@
 ---
 "on":
   pull_request:
-    branches:
-      - "**"
-    paths:
-      - "Dockerfile"
-      - .github/workflows/build-runner.yml
+    branches: ["**"]
   push:
-    branches:
-      - main
-    paths:
-      - "Dockerfile"
-      - .github/workflows/build-runner.yml
+    branches: ["main"]
 
 name: Runner
 jobs:
