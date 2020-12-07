@@ -2,11 +2,11 @@
 
 add-apt-repository -y ppa:git-core/ppa
 
-apt update -y
+apt-get update -y
 
-apt install -y software-properties-common
+apt-get install -y software-properties-common
 
-apt install -y --no-install-recommends \
+apt-get install -y --no-install-recommends \
   build-essential \
   curl \
   ca-certificates \
