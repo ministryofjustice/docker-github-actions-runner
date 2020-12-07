@@ -7,9 +7,9 @@
 # Install LTS Node.js and related build tools
 curl -sL https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash -s -- -ny -
 ~/n/bin/n lts
-npm install --unsafe-perms -g grunt gulp n parcel-bundler typescript newman
-npm install --unsafe-perms -g --save-dev webpack webpack-cli
-npm install --unsafe-perms -g npm
+npm install -g grunt gulp n parcel-bundler typescript newman
+npm install -g --save-dev webpack webpack-cli
+npm install -g npm
 rm -rf ~/n
 
 # Install Yarn repository and key

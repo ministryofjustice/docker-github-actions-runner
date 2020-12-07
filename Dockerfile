@@ -30,11 +30,13 @@ RUN echo AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache > /runner.env \
 
 COPY installers/ /installers/.
 RUN echo "Installing Tools"
-RUN chmod +x /installers/kubernetes-tools.sh && /installers/kubernetes-tools.sh
-RUN chmod +x /installers/nodejs.sh && /installers/nodejs.sh
-RUN chmod +x /installers/terraform.sh && /installers/terraform.sh
-
 COPY entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.sh \
+  && chmod +x /installers/*
+
 USER runner
+RUN sudo /installers/kubernetes-tools.sh
+RUN sudo /installers/nodejs.sh
+RUN sudo /installers/terraform.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
