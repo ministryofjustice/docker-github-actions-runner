@@ -22,12 +22,12 @@ RUN chmod +x /actions-runner/install_actions.sh \
 COPY token.sh /
 RUN chmod +x /token.sh
 
-
 RUN echo AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache > /runner.env \
   && mkdir /opt/hostedtoolcache \
   && chgrp runner /opt/hostedtoolcache \
   && chmod g+rwx /opt/hostedtoolcache
 
+USER root
 COPY installers/ /installers/.
 RUN echo "Installing Tools"
 COPY entrypoint.sh /
