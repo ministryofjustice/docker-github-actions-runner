@@ -34,9 +34,9 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh \
   && chmod +x /installers/*
 
-USER runner
-RUN sudo /installers/kubernetes-tools.sh
-RUN sudo /installers/nodejs.sh
-RUN sudo /installers/terraform.sh
+RUN /installers/kubernetes-tools.sh
+RUN /installers/nodejs.sh
+RUN /installers/terraform.sh
 
+USER runner
 ENTRYPOINT ["/entrypoint.sh"]
