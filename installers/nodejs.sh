@@ -19,6 +19,7 @@ apt-get update
 
 # Install yarn
 apt-get install -y --no-install-recommends yarn
+rm -rf /var/lib/apt/lists/*
 
 # Run tests to determine that the software installed as expected
 echo "Testing to make sure that script performed as expected, and basic scenarios work"
