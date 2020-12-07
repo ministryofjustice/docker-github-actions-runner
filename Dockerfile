@@ -33,6 +33,7 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh \
   && chmod +x /installers/*
 
+RUN /installers/packages.sh
 RUN /installers/kubernetes-tools.sh
 RUN /installers/nodejs.sh
 RUN /installers/terraform.sh
