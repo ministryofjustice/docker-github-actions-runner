@@ -12,6 +12,7 @@ touch /etc/apt/sources.list.d/kubernetes.list
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
 apt-get update
 apt-get install -y kubectl
+rm -rf "/var/lib/apt/lists/*"
 
 # Install Helm
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
