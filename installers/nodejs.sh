@@ -8,11 +8,9 @@
 curl -sL https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | bash -s -- -ny -
 ~/n/bin/n lts
 
-npm_config_user=root
-
 npm install -g grunt gulp n parcel-bundler typescript newman
 npm install -g --save-dev webpack webpack-cli
-npm install -g npm
+npm install --unsafe-perm -g npm
 rm -rf ~/n
 
 # Install Yarn repository and key
