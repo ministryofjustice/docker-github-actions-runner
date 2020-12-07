@@ -27,7 +27,6 @@ RUN echo AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache > /runner.env \
   && chgrp runner /opt/hostedtoolcache \
   && chmod g+rwx /opt/hostedtoolcache
 
-USER root
 COPY installers/ /installers/.
 RUN echo "Installing Tools"
 COPY entrypoint.sh /
