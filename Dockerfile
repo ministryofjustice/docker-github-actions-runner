@@ -21,7 +21,10 @@ COPY token.sh /
 RUN chmod +x /token.sh
 
 COPY installers/ /installers/.
-RUN chmod +x /installers/kubernetes-tools.sh \
+RUN echo "Installing Tools" \
+  && chmod +x /installers/docker-compose.sh \
+  && /installers/docker-compose.sh \
+  && chmod +x /installers/kubernetes-tools.sh \
   && /installers/kubernetes-tools.sh \
   && chmod +x /installers/nodejs.sh \
   && /installers/nodejs.sh \
@@ -30,4 +33,5 @@ RUN chmod +x /installers/kubernetes-tools.sh \
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+USER runner
 ENTRYPOINT ["/entrypoint.sh"]
