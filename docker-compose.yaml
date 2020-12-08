@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  runner:
+    image: ministryofjustice/actions-runner
+    environment:
+      DOCKERD_IN_RUNNER: "false"
+      DOCKER_HOST: tcp://localhost:2375
+      GITHUB_URL: https://github.com/
+      RUNNER_GROUP:
+      RUNNER_LABELS:
+      RUNNER_NAME:
+      RUNNER_ORG:
+      RUNNER_REPO:
+      RUNNER_TOKEN:

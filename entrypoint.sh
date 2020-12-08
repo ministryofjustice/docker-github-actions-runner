@@ -1,6 +1,5 @@
 #!/usr/bin/dumb-init /bin/bash
 
-export RUNNER_ALLOW_RUNASROOT=1
 export PATH=$PATH:/actions-runner
 
 deregister_runner() {
@@ -27,7 +26,10 @@ if [[ -n "${ACCESS_TOKEN}" ]]; then
   _SHORT_URL=$(echo "${_TOKEN}" | jq -r .short_url)
 fi
 
+sudo chown "$(whoami):docker" "${_RUNNER_WORKDIR}"
+
 echo "Configuring"
+
 ./config.sh \
     --url "${_SHORT_URL}" \
     --token "${RUNNER_TOKEN}" \
