@@ -2,7 +2,7 @@
 FROM myoung34/github-runner-base:latest
 LABEL maintainer="myoung34@my.apsu.edu"
 
-ARG GH_RUNNER_VERSION="2.274.2"
+ARG GH_RUNNER_VERSION="2.278.0"
 ARG TARGETPLATFORM
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
