@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Docker Image
     env:
-      RUNNER_VERSION: 2.278.0
+      RUNNER_VERSION: 2.278.1
       DOCKER_VERSION: 19.03.13
       DOCKERHUB_USERNAME: ministryofjustice
       DOCKERHUB_REPOSITORY: actions-runner
