@@ -1,0 +1,96 @@
+schemaVersion: 2.0.0
+
+fileExistenceTests:
+  - name: kubectl
+    path: /usr/local/bin/kubectl
+    shouldExist: true
+    permissions: "-rwxr-xr-x"
+    uid: 0
+    gid: 0
+    isExecutableBy: any
+  - name: helm
+    path: /usr/local/bin/helm
+    shouldExist: true
+    permissions: "-rwxr-xr-x"
+    uid: 0
+    gid: 0
+    isExecutableBy: any
+  - name: kustomize
+    path: /usr/local/bin/kustomize
+    shouldExist: true
+    permissions: "-rwxr-xr-x"
+    uid: 0
+    gid: 0
+    isExecutableBy: any
+  - name: npm
+    path: /usr/bin/npm
+    shouldExist: true
+    permissions: "Lrwxrwxrwx"
+    uid: 0
+    gid: 0
+    isExecutableBy: any
+  - name: npx
+    path: /usr/bin/npx
+    shouldExist: true
+    permissions: "Lrwxrwxrwx"
+    uid: 0
+    gid: 0
+    isExecutableBy: any
+  - name: yarn
+    path: /usr/bin/yarn
+    shouldExist: true
+    permissions: "Lrwxrwxrwx"
+    uid: 0
+    gid: 0
+    isExecutableBy: any
+  - name: terraform
+    path: /usr/local/bin/terraform
+    shouldExist: true
+    permissions: "-rwxr-xr-x"
+    uid: 0
+    gid: 0
+    isExecutableBy: any
+
+commandTests:
+  - name: kubectl
+    command: "bash"
+    args:
+      - -c
+      - |
+         kubectl version --client true --output yaml
+  - name: helm
+    command: "bash"
+    args:
+      - -c
+      - |
+         helm version
+  - name: kustomize
+    command: "bash"
+    args:
+      - -c
+      - |
+         kustomize version
+  - name: npm
+    command: "bash"
+    args:
+      - -c
+      - |
+         npm version
+  - name: npx
+    command: "bash"
+    args:
+      - -c
+      - |
+         npx --version
+  - name: yarn
+    command: "bash"
+    args:
+      - -c
+      - |
+         yarn --version
+  - name: terraform
+    command: "bash"
+    args:
+      - -c
+      - |
+         terraform -version

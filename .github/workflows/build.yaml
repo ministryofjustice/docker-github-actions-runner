@@ -1,0 +1,36 @@
+---
+name: Build Runner
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  BASE_IMAGE_VERSION: v2.299.1-ubuntu-20.04
+
+jobs:
+  build:
+    name: build-runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v3
+
+      - name: Build Image
+        id: build_image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          tags: github-actions-runner:${{ github.sha }}
+
+      - name: Container Structure Test
+        id: container_structure_test
+        uses: docker://gcr.io/gcp-runtimes/container-structure-test:latest
+        with:
+          args: test --image github-actions-runner:${{ github.sha }} --config container-structure-test.yaml
